@@ -6,6 +6,27 @@
 </head>
 <body>
   <h1>Aprendiendo Spring Boot</h1>
-  <h2 th:text="'Hola Mundo'"></h2>
+  <h2 th:text="${saludo}">
+
+  </h2>
+  <div th:if="${ personas != null and !personas.isEmpty() }">
+      <table border="1">
+          <tr>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Profesión</th>
+              <th>Email</th>
+          </tr>
+          <tr th:each="persona : ${personas}">
+              <td th:text="${persona.nombres}"></td>
+              <td th:text="${persona.apellidos}"></td>
+              <td th:text="${persona.profesion}"></td>
+              <td th:text="${persona.email}"></td>
+          </tr>
+      </table>
+  </div>
+  <div th:if="${ personas == null or personas.isEmpty() }">
+    <h3>¡La lista está vacía!</h3>
+  </div>
 </body>
 </html>
