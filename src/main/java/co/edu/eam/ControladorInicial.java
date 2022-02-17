@@ -31,7 +31,7 @@ public class ControladorInicial {
 
         var persona2 = new Persona();
         persona2.setNombres("Juan");
-        persona2.setApellidos("Pérez");
+        persona2.setApellidos("Tovar");
         persona2.setProfesion("Desarrollador");
         persona2.setEmail("mauricio@eam.edu.co");
 
