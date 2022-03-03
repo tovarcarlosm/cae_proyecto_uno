@@ -15,16 +15,17 @@ public class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
-    @Size(min = 3)
+    @NotEmpty(message = "El campo NOMBRE no puede estar libre")
+    @Size(min = 3, max = 40, message = "Longitud min 3 y max 40")
     private String nombres;
 
     @NotEmpty
-    @Size(min = 3)
+    @Size(min = 3, max = 50)
     private String apellidos;
 
     @NotEmpty
-    @Size(min = 3)
+    @NotBlank
+    @Size(min = 3, max = 30)
     private String profesion;
 
     @Email

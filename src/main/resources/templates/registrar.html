@@ -16,12 +16,15 @@
         <br>
         <label for="apellidos">Apellidos</label>
         <input type="text" name="apellidos" id="apellidos" th:field="*{apellidos}"/>
+        <span th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}">El campo es requerido</span>
         <br>
         <label for="profesion">Profesión</label>
         <input type="text" name="profesion" id="profesion" th:field="*{profesion}"/>
+        <span th:if="${#fields.hasErrors('profesion')}" th:errors="*{profesion}">El campo es requerido</span>
         <br>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" th:field="*{email}"/>
+        <input type="text" name="email" id="email" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">El campo es requerido</span>
         <br>
         <input type="submit" value="Guardar">
     </form>
