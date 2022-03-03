@@ -5,7 +5,8 @@
     <title>Spring Boot</title>
 </head>
 <body>
-  <h1>Aprendiendo Spring Boot</h1>
+  <h1>Construcción App Empresariales</h1>
+  <header th:replace="sub-templates/plantilla :: header"></header>
 
   <a th:href="@{/registrar}">Registrar Persona</a>
   <div th:if="${ personas != null and !personas.isEmpty() }">
@@ -31,5 +32,6 @@
   <div th:if="${ personas == null or personas.isEmpty() }">
     <h3>¡La lista está vacía!</h3>
   </div>
+  <footer th:replace="sub-templates/plantilla :: footer"></footer>
 </body>
 </html>
