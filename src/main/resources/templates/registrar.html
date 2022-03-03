@@ -9,8 +9,10 @@
     <a th:href="@{/}">Regresar</a>
     <br>
     <form th:action="@{/guardar}" method="post" th:object="${persona}">
+        <input type="hidden" name="id" th:field="*{id}">
         <label for="nombres">Nombres</label>
         <input type="text" name="nombres" id="nombres" th:field="*{nombres}"/>
+        <span th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}">El campo es requerido</span>
         <br>
         <label for="apellidos">Apellidos</label>
         <input type="text" name="apellidos" id="apellidos" th:field="*{apellidos}"/>

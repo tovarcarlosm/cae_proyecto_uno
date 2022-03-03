@@ -6,7 +6,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
 
 @Controller
 @Slf4j
@@ -29,9 +34,24 @@ public class ControladorInicial {
     }
 
     @PostMapping("/guardar")
-    public String guardar(Persona persona){
+    public String guardar(@Valid Persona persona, Errors errores){
+        if (errores.hasErrors()) {
+            return "registrar";
+        }
         personaService.guardar(persona);
         return "redirect:/";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editar(Persona persona, Model model){
+        persona = personaService.buscarPorId(persona);
+        model.addAttribute("persona", persona);
+        return "registrar";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminar(Persona persona){
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
 }

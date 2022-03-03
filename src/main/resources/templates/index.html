@@ -15,12 +15,16 @@
               <th>Apellidos</th>
               <th>Profesión</th>
               <th>Email</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
           </tr>
           <tr th:each="persona : ${personas}">
               <td th:text="${persona.nombres}"></td>
               <td th:text="${persona.apellidos}"></td>
               <td th:text="${persona.profesion}"></td>
               <td th:text="${persona.email}"></td>
+              <td><a th:href="@{/editar/} + ${persona.id}" th:text="Editar"></a></td>
+              <td><a th:href="@{/eliminar/} + ${persona.id}" th:text="Eliminar"></a></td>
           </tr>
       </table>
   </div>

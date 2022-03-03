@@ -26,11 +26,13 @@ public class PersonaServiceImplementation implements PersonaService{
     }
 
     @Override
+    @Transactional
     public void guardar(Persona persona) {
         personaDao.save(persona);
     }
 
     @Override
+    @Transactional
     public void eliminar(Persona persona) {
         personaDao.delete(persona);
     }
