@@ -14,11 +14,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("admin")
-                .password("admin1234")
+                .password("{noop}admin1234")
                 .roles("ADMIN", "USER")
                 .and()
                 .withUser("usuario")
-                .password("usuario1234")
+                .password("{noop}usuario1234")
                 .roles("USER");
     }
 
@@ -28,6 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registrar/**","/editar/**", "/eliminar/**")
                 .hasRole("ADMIN")
                 .antMatchers("/")
-                .hasAnyRole("USER", "ADMIN");
+                .hasAnyRole("USER", "ADMIN")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .and()
+                .exceptionHandling().accessDeniedPage("/errors/403");
     }
 }

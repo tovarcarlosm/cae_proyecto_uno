@@ -4,6 +4,8 @@ import co.edu.eam.domain.Persona;
 import co.edu.eam.service.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +23,10 @@ public class ControladorInicial {
     private PersonaService personaService;
 
     @GetMapping("/")
-    public String inicio(Model model){
+    public String inicio(Model model, @AuthenticationPrincipal User user){
         var personas = personaService.listar();
         log.info("Ejecutando método inicio desde MVC");
+        log.info("Usuario que inició sesión: " + user);
         model.addAttribute("personas", personas);
         return "index";
     }
