@@ -7,9 +7,8 @@
 <body>
   <header th:replace="sub-templates/plantilla :: header"></header>
   <section th:replace="sub-templates/btnAgregar :: btnAgregar"></section>
-
-
-  <a th:href="@{/registrar}">Registrar Persona</a>
+  <section th:replace="sub-templates/agregarPersona :: agregarPersona"></section>
+  
   <div th:if="${ personas != null and !personas.isEmpty() }">
       <table border="1">
           <tr>

@@ -25,21 +25,19 @@ public class ControladorInicial {
     @GetMapping("/")
     public String inicio(Model model, @AuthenticationPrincipal User user){
         var personas = personaService.listar();
-        log.info("Ejecutando método inicio desde MVC");
-        log.info("Usuario que inició sesión: " + user);
         model.addAttribute("personas", personas);
         return "index";
     }
 
     @GetMapping("/registrar")
     public String registrar(Persona persona){
-        return "registrar";
+        return "index";
     }
 
     @PostMapping("/guardar")
     public String guardar(@Valid Persona persona, Errors errores){
         if (errores.hasErrors()) {
-            return "registrar";
+            return "index";
         }
         personaService.guardar(persona);
         return "redirect:/";

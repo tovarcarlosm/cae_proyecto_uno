@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Persona</title>
+</head>
+<body>
+    <section th:fragment="editarPersona">
+        <form method="post" th:action="@{/guardar}" th:object="${persona}">
+            <input type="hidden" name="id" th:field="*{id}">
+        </form>
+    </section>
+</body>
+</html>
