@@ -8,30 +8,8 @@
   <header th:replace="sub-templates/plantilla :: header"></header>
   <section th:replace="sub-templates/btnAgregar :: btnAgregar"></section>
   <section th:replace="sub-templates/agregarPersona :: agregarPersona"></section>
-  
-  <div th:if="${ personas != null and !personas.isEmpty() }">
-      <table border="1">
-          <tr>
-              <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Profesión</th>
-              <th>Email</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
-          </tr>
-          <tr th:each="persona : ${personas}">
-              <td th:text="${persona.nombres}"></td>
-              <td th:text="${persona.apellidos}"></td>
-              <td th:text="${persona.profesion}"></td>
-              <td th:text="${persona.email}"></td>
-              <td><a th:href="@{/editar/} + ${persona.id}" th:text="Editar"></a></td>
-              <td><a th:href="@{/eliminar/} + ${persona.id}" th:text="Eliminar"></a></td>
-          </tr>
-      </table>
-  </div>
-  <div th:if="${ personas == null or personas.isEmpty() }">
-    <h3>¡La lista está vacía!</h3>
-  </div>
+  <section th:replace="sub-templates/listadoPersonas :: listadoPersonas"></section>
+
   <footer th:replace="sub-templates/plantilla :: footer"></footer>
 </body>
 </html>

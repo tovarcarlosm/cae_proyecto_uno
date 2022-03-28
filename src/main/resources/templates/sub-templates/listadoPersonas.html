@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Listado Personas</title>
+    <section th:replace="sub-templates/plantilla :: head"></section>
+</head>
+<body>
+    <section th:fragment="listadoPersonas" id="listadoPersonas">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Personas</h3>
+                        </div>
+                        <div th:if="${ personas != null and !personas.isEmpty() }">
+                            <table class="table table-striped">
+                                <tr class="table-dark">
+                                    <th>#</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Profesión</th>
+                                    <th>Email</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                                <tr th:each="persona, contador : ${personas}">
+                                    <td th:text="${contador.count}"></td>
+                                    <td th:text="${persona.nombres}"></td>
+                                    <td th:text="${persona.apellidos}"></td>
+                                    <td th:text="${persona.profesion}"></td>
+                                    <td th:text="${persona.email}"></td>
+                                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a type="button" class="btn btn-warning" th:href="@{/editar/} + ${persona.id}" th:text="Editar"></a>
+                                    </td>
+                                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a type="button" class="btn btn-danger" th:href="@{/eliminar/} + ${persona.id}" th:text="Eliminar"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div th:if="${ personas == null or personas.isEmpty() }">
+                            <h3>¡La lista está vacía!</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
