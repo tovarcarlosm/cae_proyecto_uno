@@ -5,14 +5,16 @@
     <title>Boton editar</title>
 </head>
 <body>
-<section th:fragment="btnEditar" class="py-4 mb-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-3" sec:authorize="hasRole{'ROLE_ADMIN'}">
-                <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarPersona">
-                    <i class="fas fa-edit"></i>
-                    Editar
-                </a>
+<section th:fragment="btnEditar">
+    <div id="acciones" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-3" sec:authorize="hasRole{'ROLE_ADMIN'}">
+                    <a th:href="@{/}" class="btn btn-light">
+                        <i class="fas fa-arrow-left"></i>
+                        Regresar
+                    </a>
+                </div>
             </div>
         </div>
     </div>

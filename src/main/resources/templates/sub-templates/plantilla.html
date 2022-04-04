@@ -48,7 +48,11 @@
     <footer th:fragment="footer">
         <ul>
             <li>
-                <a href="#">logout</a>
+                <form th:action="@{/logout}" method="POST">
+                    <a href="#" class="btn btn-danger" onclick="this.parentNode.submit();">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </form>
             </li>
             <li>
                 <p>&copy; Derechos Reservados de la EAM</p>

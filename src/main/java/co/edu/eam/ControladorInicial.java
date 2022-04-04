@@ -26,6 +26,7 @@ public class ControladorInicial {
     public String inicio(Model model, @AuthenticationPrincipal User user){
         var personas = personaService.listar();
         model.addAttribute("personas", personas);
+        model.addAttribute("totalPersonas", personas.size());
         return "index";
     }
 
@@ -47,7 +48,7 @@ public class ControladorInicial {
     public String editar(Persona persona, Model model){
         persona = personaService.buscarPorId(persona);
         model.addAttribute("persona", persona);
-        return "registrar";
+        return "modificar";
     }
 
     @GetMapping("/eliminar/{id}")
@@ -55,4 +56,6 @@ public class ControladorInicial {
         personaService.eliminar(persona);
         return "redirect:/";
     }
+
+
 }
